@@ -1,0 +1,19 @@
+{
+  "name": "adj-api",
+  "version": "1.0.0",
+  "description": "ADJ GraphQL API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Victor Martin (victor.martin.alvarez@oracle.com)",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.9.4",
+    "apollo-server": "^2.18.2",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.3.0",
+    "qs": "^6.9.4"
+  }
+}

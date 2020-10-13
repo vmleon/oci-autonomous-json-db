@@ -11,12 +11,23 @@ const typeDefs = gql`
   type Query {
     books: [Book]
   }
+
+  type Mutation {
+    addBook(title: String, author: String): Book
+  }
 `;
 
 const resolvers = {
   Query: {
     books: async (_source, _args, { dataSources }) => {
       return dataSources.booksAPI.getAll();
+    },
+  },
+
+  Mutation: {
+    addBook: async (_source, book, { dataSources }) => {
+      console.log({ book });
+      return dataSources.booksAPI.add(book);
     },
   },
 };

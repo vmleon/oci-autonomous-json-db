@@ -21,6 +21,12 @@ class BooksAPI extends RESTDataSource {
     const results = await this.get(`${booksPath}?${params}`);
     return results.items.map((item) => item.value);
   }
+
+  async add(book) {
+    const result = await this.post(`${booksPath}`, book);
+    console.log(JSON.stringify(result, null, 2));
+    return book;
+  }
 }
 
 module.exports = BooksAPI;

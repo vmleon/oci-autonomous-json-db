@@ -36,7 +36,26 @@ soda insert books {"title":"Command and Control","author":"Eric Schlosser"}
 soda insert books {"title":"Originals","author":"Adam Grant"}
 ```
 
-### Other SODA commands
+## GraphQL Server
+
+On [src/api](./src/api) you can find the implementation of a GraphQL server.
+
+Go there and run `npm install` then `npm start`.
+
+Go to [localhost:4000](http://localhost:4000/)
+
+On the GraphQL Playground:
+
+```
+query Books {
+  books {
+    title
+    author
+  }
+}
+```
+
+---
 
 ```
 soda help

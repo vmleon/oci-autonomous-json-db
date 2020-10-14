@@ -18,11 +18,13 @@ class BooksAPI extends RESTDataSource {
   }
 
   async getAll() {
+    console.log("HTTP get all Books");
     const results = await this.get(`${booksPath}?${params}`);
     return results.items.map((item) => item.value);
   }
 
   async add(book) {
+    console.log("HTTP create Book");
     const result = await this.post(`${booksPath}`, book);
     console.log(JSON.stringify(result, null, 2));
     return book;

@@ -1,11 +1,18 @@
 const { ApolloServer, gql } = require("apollo-server");
 require("dotenv").config();
 const BooksAPI = require("./BooksAPI");
+const ReviewsAPI = require("./ReviewsAPI");
 
 const typeDefs = gql`
   type Book {
     title: String
     author: String
+    reviews: [Review]
+  }
+
+  type Review {
+    score: Int
+    comment: String
   }
 
   type Query {
@@ -24,9 +31,14 @@ const resolvers = {
     },
   },
 
+  Book: {
+    reviews: ({ title }, _args, { dataSources }) => {
+      return dataSources.reviewsAPI.getAllByBookId(title);
+    },
+  },
+
   Mutation: {
     addBook: async (_source, book, { dataSources }) => {
-      console.log({ book });
       return dataSources.booksAPI.add(book);
     },
   },
@@ -34,6 +46,7 @@ const resolvers = {
 
 const dataSources = () => ({
   booksAPI: new BooksAPI(),
+  reviewsAPI: new ReviewsAPI(),
 });
 
 const server = new ApolloServer({

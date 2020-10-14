@@ -36,6 +36,13 @@ soda insert books {"title":"Command and Control","author":"Eric Schlosser"}
 soda insert books {"title":"Originals","author":"Adam Grant"}
 ```
 
+Create reviews
+
+```
+soda create reviews
+soda insert reviews {"book": "Command and Control", "score": 5, "comment": "A must read for nuclear accidents"}
+```
+
 ## GraphQL Server
 
 On [src/api](./src/api) you can find the implementation of a GraphQL server.

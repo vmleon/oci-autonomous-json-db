@@ -1,4 +1,5 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
+const logger = require("pino")();
 const qs = require("qs");
 const { SODA_URL, SODA_USER, SODA_PASSWORD } = process.env;
 const reviewsPath = `${SODA_URL}/reviews`;
@@ -17,7 +18,7 @@ class ReviewsAPI extends RESTDataSource {
   }
 
   async getAllByBookId(title) {
-    console.log(`HTTP search Reviews by Book Id`);
+    logger.info("ReviewsAPI.getAllByBookId");
     const queryParams = qs.stringify({ action: "query", fields: "value" });
     const filters = {
       book: title,
@@ -26,14 +27,9 @@ class ReviewsAPI extends RESTDataSource {
     return results.items.map((item) => item.value);
   }
 
-  async add({ title, score, comment }) {
-    console.log(`HTTP create Review`);
-    const review = {
-      title: title,
-      score,
-      comment,
-    };
-    const result = await this.post(`${reviewsPath}`, review);
+  async write(review) {
+    logger.info("ReviewsAPI.write");
+    await this.post(`${reviewsPath}`, review);
     return review;
   }
 }

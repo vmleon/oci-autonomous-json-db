@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require("apollo-server");
+const logger = require("pino")();
 require("dotenv").config();
 const BooksAPI = require("./BooksAPI");
 const ReviewsAPI = require("./ReviewsAPI");
@@ -21,6 +22,7 @@ const typeDefs = gql`
 
   type Mutation {
     addBook(title: String, author: String): Book
+    writeReview(book: String, score: Int, comment: String): Review
   }
 `;
 
@@ -41,6 +43,9 @@ const resolvers = {
     addBook: async (_source, book, { dataSources }) => {
       return dataSources.booksAPI.add(book);
     },
+    writeReview: async (_source, review, { dataSources }) => {
+      return dataSources.reviewsAPI.write(review);
+    },
   },
 };
 
@@ -56,5 +61,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+  logger.info(`🚀  Server ready at ${url}`);
 });

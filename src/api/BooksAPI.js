@@ -1,4 +1,5 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
+const logger = require("pino")();
 const qs = require("qs");
 const { SODA_URL, SODA_USER, SODA_PASSWORD } = process.env;
 const booksPath = `${SODA_URL}/books`;
@@ -18,15 +19,14 @@ class BooksAPI extends RESTDataSource {
   }
 
   async getAll() {
-    console.log("HTTP get all Books");
+    logger.info("BooksAPI.getAll");
     const results = await this.get(`${booksPath}?${params}`);
     return results.items.map((item) => item.value);
   }
 
   async add(book) {
-    console.log("HTTP create Book");
-    const result = await this.post(`${booksPath}`, book);
-    console.log(JSON.stringify(result, null, 2));
+    logger.info("BooksAPI.add");
+    await this.post(`${booksPath}`, book);
     return book;
   }
 }

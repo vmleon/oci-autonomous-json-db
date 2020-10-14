@@ -26,6 +26,14 @@ A native, open-source document store API called SODA (Simple Oracle Document Acc
 
 ## SODA
 
+Official Documentation:
+
+[Using Oracle Autonomous JSON Database](https://docs.oracle.com/en/cloud/paas/autonomous-json-database/ajdug/use-sql-developer-web-soda.html)
+
+[SODA for REST Developer's Guide](https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/rest/adrst/rest.html)
+
+[JSON Developer's Guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/adjsn/index.html)
+
 ### Create JSON collection
 
 Go to `Tools` > `SQL Developer Web` and run the following:

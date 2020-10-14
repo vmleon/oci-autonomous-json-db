@@ -1,0 +1,93 @@
+@db_url=<service>.adb.<region>.oraclecloudapps.com
+@user=admin
+@password=<password>
+
+
+# CREATE Books
+PUT https://{{db_url}}/ords/admin/soda/latest/books
+Authorization: Basic {{user}}:{{password}}
+
+###
+
+# GET All books
+GET https://{{db_url}}/ords/admin/soda/latest/books
+    ?fields=value
+Authorization: Basic {{user}}:{{password}}
+
+###
+
+
+# INSERT Book
+POST https://{{db_url}}/ords/admin/soda/latest/reviews
+Authorization: Basic {{user}}:{{password}}
+content-type: application/json
+
+{
+    "title": "Command and Control",
+    "author": "Eric Schlosser"
+}
+
+###
+
+# TRUNCATE Books
+POST https://{{db_url}}/ords/admin/soda/latest/custom-actions/truncate/books
+Authorization: Basic {{user}}:{{password}}
+
+###
+
+# DROP books
+DELETE https://{{db_url}}/ords/admin/soda/latest/books
+Authorization: Basic {{user}}:{{password}}
+
+###
+
+# CREATE Reviews
+PUT https://{{db_url}}/ords/admin/soda/latest/reviews
+Authorization: Basic {{user}}:{{password}}
+
+###
+
+# Get All Reviews
+GET https://{{db_url}}/ords/admin/soda/latest/reviews
+    ?fields=value
+Authorization: Basic {{user}}:{{password}}
+
+###
+
+# INSERT Review
+POST https://{{db_url}}/ords/admin/soda/latest/reviews
+Authorization: Basic {{user}}:{{password}}
+content-type: application/json
+
+{
+    "book": "Command and Control",
+    "score": 5,
+    "comment": "Really interesting book about how things go wrong"
+}
+
+###
+
+# GET Reviews (filter)
+POST https://{{db_url}}/ords/admin/soda/latest/reviews
+    ?action=query
+    &fields=value
+Authorization: Basic {{user}}:{{password}}
+content-type: application/json
+
+{
+    "book": "Command and Control"
+}
+
+###
+
+# TRUNCATE Reviews
+POST https://{{db_url}}/ords/admin/soda/latest/custom-actions/truncate/reviews
+Authorization: Basic {{user}}:{{password}}
+
+###
+
+# DROP Reviews
+DELETE https://{{db_url}}/ords/admin/soda/latest/reviews
+Authorization: Basic {{user}}:{{password}}
+
+###

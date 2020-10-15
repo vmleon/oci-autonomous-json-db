@@ -9,7 +9,6 @@ function App() {
     <Container>
       <PageHeader
         className="site-page-header"
-        onBack={() => null}
         title="Oracle Autonomous JSON"
         subTitle="a NoSQL database that goes from dev to production straight away!"
       />

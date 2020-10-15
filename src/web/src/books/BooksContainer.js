@@ -9,6 +9,7 @@ const BOOKS = gql`
     books {
       title
       author
+      avgScore
     }
   }
 `;

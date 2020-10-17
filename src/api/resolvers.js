@@ -22,7 +22,13 @@ const resolvers = {
 
   Mutation: {
     addBook: async (_source, book, { dataSources }) => {
-      return dataSources.booksAPI.add(book);
+      // TODO read the uploaded picture
+      // TODO resize picture
+      // TODO store picture in Object Storage
+      // TODO get the public URL of the picture
+      // FIXME
+      const newBook = {...book, imageURL: "https://objectstorage.eu-frankfurt-1.oraclecloud.com/n/odca/b/app/o/book.png"};
+      return dataSources.booksAPI.add(newBook);
     },
     writeReview: async (_source, review, { dataSources }) => {
       return dataSources.reviewsAPI.write(review);

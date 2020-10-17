@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import { Alert } from 'antd';
 
 function Warning({children: error}) {
-  console.log(error);
-  return <Alert
+  return <Center><Alert
       message="Ouch, something went wrong."
       description={error}
       type="warning"
       showIcon
       closable
-    />
+    /></Center>
 }
 
 const Center = styled.div`

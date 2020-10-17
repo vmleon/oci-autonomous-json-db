@@ -5,16 +5,25 @@ import "antd/dist/antd.css";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import styled from "styled-components";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
   cache: new InMemoryCache(),
 });
 
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
+
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <Container>
+        <App />
+      </Container>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

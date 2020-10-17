@@ -6,6 +6,7 @@ const typeDefs = gql`
     author: String
     avgScore: Float
     reviews: [Review]
+    imageURL: String
   }
 
   type Review {

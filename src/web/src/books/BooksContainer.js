@@ -1,14 +1,15 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import Books from './Books';
-import Loading from '../Loading';
-import Warning from '../Warning';
+import Books from "./Books";
+import Loading from "../Loading";
+import Warning from "../Warning";
 
 const BOOKS = gql`
   query Books {
     books {
       title
       author
+      imageURL
       avgScore
     }
   }
@@ -22,7 +23,5 @@ function BooksContainer() {
 
   return <Books>{data}</Books>;
 }
-
-
 
 export default BooksContainer;
